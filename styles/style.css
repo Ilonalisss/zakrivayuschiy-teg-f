@@ -26,7 +26,7 @@
 }
 
 .header {
-  width: min(698px, 99%);
+  width: min(698px, 100%);
   background-color: var(--background-color);
   padding: clamp(121px, 125px + 1vw, 130px) 0;
   margin-block-end: clamp(98px, 99px + 0.5vw, 100px);
@@ -92,6 +92,8 @@
   width: 100%;
   height: auto;
   display: block;
+  object-fit: cover;
+  object-position: center;
 }
 
 .image-logo {
@@ -104,6 +106,11 @@
   opacity: 0.5;
   mix-blend-mode: hard-light;
   z-index: 1;
+  text-shadow:
+  -1px 0 #fff,
+  0 1px #fff,
+  1px 0 #fff,
+  0 -1px #fff;
 }
 
 @supports ((text-stroke: 1px #fff) or (-webkit-text-stroke: 1px #fff)) {
@@ -162,47 +169,23 @@
   box-shadow: none;
 }
 
-.card__like-button {
+.button-common {
   background: var(--background-color);
   border: 2px solid var(--accent-color);
   font-family: var(--accent-font);
   font-size: 14px;
-  padding: 10px 20px;
   cursor: pointer;
   overflow: hidden;
   position: relative;
   transition: box-shadow 0.3s ease;
-  min-width: 130px;
 }
 
-.card__like-button:focus-visible {
+.button-common:focus-visible {
   outline: none;
   box-shadow: 2px 2px 0 var(--accent-color);
 }
 
-.save-button {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 15px 20px;
-  background-color: var(--background-color);
-  border: 2px solid var(--accent-color);
-  font-family: var(--accent-font);
-  font-size: 14px;
-  cursor: pointer;
-  overflow: hidden;
-  transition: box-shadow 0.3s ease;
-}
-
-.save-button:focus {
-  outline: none;
-  box-shadow: 2px 2px 0 var(--accent-color);
-}
-
-.card__like-button::before,
-.save-button::before,
-.dialog__button::before {
+.button-common::before {
   content: "";
   position: absolute;
   top: 0;
@@ -215,15 +198,37 @@
   z-index: 0;
 }
 
-.card__like-button:hover::before,
-.save-button:hover::before,
-.dialog__button:hover::before {
+.button-common:hover::before {
   transform: translateX(0);
 }
 
+button:not(.card__icon-button):focus {
+  outline: none;
+}
+
+.card__like-button {
+  min-width: 130px;
+  padding: 10px 20px;
+}
+
+.save-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 14px 15px;
+  margin: 0 auto 100px;
+}
+
+.dialog__button {
+  width: 100%;
+  min-height: 38px;
+  margin-top: clamp(25px, 27px + 0.8vw, 30px);
+}
+
 .floppy-icon {
-  width: clamp(30px, 25px + 1.5vw, 21px);
-  height: clamp(30px, 25px + 1.5vw, 21px);
+  width: clamp(21px, 16px + 3vw, 28px);
+  height: clamp(21px, 16px + 3vw, 28px);
   color: var(--background-color);
   mix-blend-mode: difference;
   z-index: 1;
@@ -262,13 +267,6 @@
   filter: hue-rotate(200deg) saturate(190%) contrast(130%) brightness(90%);
 }
 
-.footer {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding-bottom: 100px;
-}
-
 .dialog {
   background-color: var(--background-color);
   border: 2px solid var(--accent-color);
@@ -278,7 +276,7 @@
 }
 
 .dialog::backdrop {
-  background-color: rgb(0 0 0 / 0.8);
+  background-color: rgb(0 0 0 / 0.75);
 }
 
 .dialog__content {
@@ -301,30 +299,6 @@
   font-size: 14px;
 }
 
-.dialog__button {
-  position: relative;
-  width: 100%;
-  min-height: 38px;
-  background-color: var(--background-color);
-  border: 2px solid var(--accent-color);
-  font-family: var(--accent-font);
-  font-size: 14px;
-  cursor: pointer;
-  overflow: hidden;
-  transition: box-shadow 0.3s ease;
-  margin-top: clamp(25px, 27px + 0.8vw, 30px);
-}
-
-.dialog__button:focus {
-  outline: none;
-  box-shadow: 2px 2px 0 var(--accent-color);
-}
-
-.dialog__button .button__text {
-  color: #ffffff;
-  mix-blend-mode: difference;
-}
-
 @media (width <=376px) {
   .header {
     padding: 121px 0px;
@@ -344,8 +318,7 @@
   .save-button {
     display: flex;
     flex-direction: column;
-    min-width: 306px;
-    min-height: 70px;
-    gap: 3px;
+    padding: 14px 19px;
+    gap: 7px;
   }
 }
