@@ -1,4 +1,5 @@
 https://github.com/Ilonalisss/zakrivayuschiy-teg-f.git
+https://ilonalisss.github.io/zakrivayuschiy-teg-f/
 
 # Яндекс Практикум, практическая работа - "Закрывающий тег"
 
