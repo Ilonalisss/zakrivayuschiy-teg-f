@@ -118,7 +118,7 @@
 }
 
 .card-text {
-  padding: 25px;
+  padding: 25px 26px;
 }
 
 .card-text p {
@@ -301,9 +301,8 @@
     margin-block-end: 98px;
   }
   .card-text {
-    padding: 26.2px;
+    padding: 26.2px 24px;
   }
-
   .card {
     margin: 5px auto 50px;
   }
@@ -313,7 +312,6 @@
   .card:first-child .card-header {
     padding: 5px 9px;
   }
-
   .save-button {
     display: flex;
     flex-direction: column;
